@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>添加.gitignore文件 · GitBook</title>
+        <title>ssh · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -57,10 +57,10 @@
     <link rel="shortcut icon" href="gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="github/" />
+    <link rel="next" href="往服务器上边加入自己本机的id_rsa.pub登录服务器的时候，就不用输入密码了.html" />
     
     
-    <link rel="prev" href="css/transform使元素居中的bug.html" />
+    <link rel="prev" href="docker/Fabric更新后，添加一个新的Org到Channel中.html" />
     
 
     </head>
@@ -633,7 +633,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.6" data-path="添加.gitignore文件.html">
+        <li class="chapter " data-level="1.6" data-path="添加.gitignore文件.html">
             
                 <a href="添加.gitignore文件.html">
             
@@ -794,7 +794,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.13" data-path="SSH设置别名访问远程服务器.html">
+        <li class="chapter active" data-level="1.13" data-path="SSH设置别名访问远程服务器.html">
             
                 <a href="SSH设置别名访问远程服务器.html">
             
@@ -850,7 +850,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >添加.gitignore文件</a>
+        <a href="." >ssh</a>
     </h1>
 </div>
 
@@ -865,21 +865,33 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h5 id="&#x6DFB;&#x52A0;gitignore&#x6587;&#x4EF6;">&#x6DFB;&#x52A0;.gitignore&#x6587;&#x4EF6;</h5>
-<pre><code>.DS_Store
-node_modules/
-dist/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+                                <h1 id="ssh&#x8BBE;&#x7F6E;&#x522B;&#x540D;&#x8BBF;&#x95EE;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;">SSH&#x8BBE;&#x7F6E;&#x522B;&#x540D;&#x8BBF;&#x95EE;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;</h1>
+<p>&#x4F7F;&#x7528;ssh&#x8BBF;&#x95EE;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x7684;&#x547D;&#x4EE4;&#x662F;&#xFF1A;ssh username@ip&#x5730;&#x5740;&#x3002;
+&#x5728;mac&#x4E2D;&#xFF0C;&#x8BBE;&#x7F6E;&#x522B;&#x540D;&#xFF0C;&#x5E76;&#x7528;<code>ssh host1</code>&#x6253;&#x5F00;&#x76F8;&#x5BF9;&#x5E94;&#x7684;ip&#x5730;&#x5740;&#xFF0C;&#x767B;&#x9646;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<ol>
+<li><p>&#x8FDB;&#x5165;ssh&#x76EE;&#x5F55;</p>
+<pre><code>cd ~/.ssh
+ls
+</code></pre><p>&#x4F1A;&#x770B;&#x5230;&#x6709;config&#x3001;known_hosts&#x4E24;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x4E00;&#x822C;&#x7684;&#x6CA1;&#x6709;&#x8BBE;&#x7F6E;&#x7684;&#x8BDD;&#xFF0C;&#x53EA;&#x4F1A;&#x6709;known_hosts&#xFF0C;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>touch config</code>&#x547D;&#x4EE4;&#x521B;&#x5EFA;config&#x6587;&#x4EF6;&#x3002;</p>
+</li>
+<li><p>&#x7F16;&#x8F91;config&#x6587;&#x4EF6;
+1&#x3001;Host &#x540E;&#x8FB9;&#x7684;&#x662F;&#x540D;&#x79F0;&#xFF0C;&#x4EE5;&#x540E;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x8FD9;&#x4E2A;&#x540D;&#x79F0;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;&#xFF1B;
+2&#x3001;HostName&#x662F;&#x4F60;&#x7684;&#x4E3B;&#x673A;IP&#x5730;&#x5740;&#xFF1B;
+3&#x3001;User&#x4E3A;&#x4E3B;&#x673A;&#x767B;&#x5F55;&#x7684;&#x7528;&#x6237;&#x540D;&#xFF1B;
+4&#x3001;IdentitiesOnly yes&#x56FA;&#x6709;&#x914D;&#x7F6E;&#xFF1B;</p>
+</li>
+</ol>
+<p>&#x4F8B;&#x5982;&#xFF1A;</p>
+<pre><code>Host host1
+HostName 1x.x.1x.1xx
+User myName
+IdentitiesOnly yes
+</code></pre><p>&#x8BBE;&#x7F6E;&#x5B8C;&#x6210;&#x4E4B;&#x540E;&#xFF0C;&#x5C31;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>ssh host1</code>&#x767B;&#x9646;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x3002;</p>
+<ol>
+<li>&#x4EE5;&#x53E6;&#x4E00;&#x4E2A;&#x7528;&#x6237;<code>root</code>&#x767B;&#x5165;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;&#x3002;<pre><code>ssh root@host1
+</code></pre>hosts&#x6587;&#x4EF6;&#x5728;/etc&#x4E0B;</li>
+</ol>
 
-# Editor directories and files
-.idea
-*.suo
-*.ntvs*
-*.njsproj
-*.sln
-</code></pre>
                                 
                                 </section>
                             
@@ -906,12 +918,12 @@ yarn-error.log*
 
             
                 
-                <a href="css/transform使元素居中的bug.html" class="navigation navigation-prev " aria-label="Previous page: transform使元素居中的bug">
+                <a href="docker/Fabric更新后，添加一个新的Org到Channel中.html" class="navigation navigation-prev " aria-label="Previous page: Fabric更新后，添加一个新的Org到Channel中">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="github/" class="navigation navigation-next " aria-label="Next page: github">
+                <a href="往服务器上边加入自己本机的id_rsa.pub登录服务器的时候，就不用输入密码了.html" class="navigation navigation-next " aria-label="Next page: 往服务器上边加入自己本机的id_rsa.pub登录服务器的时候，就不用输入密码了">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -922,7 +934,7 @@ yarn-error.log*
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"添加.gitignore文件","level":"1.6","depth":1,"next":{"title":"github","level":"1.7","depth":1,"path":"github/README.md","ref":"github/README.md","articles":[{"title":"\b将自己的项目放到github上并在浏览器上显示\b出现相应的网页","level":"1.7.1","depth":2,"path":"github/将自己的项目放到github上.md","ref":"github/将自己的项目放到github上.md","articles":[]}]},"previous":{"title":"\btransform使元素居中的bug","level":"1.5.13","depth":2,"path":"css/transform使元素居中的bug.md","ref":"css/transform使元素居中的bug.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"添加.gitignore文件.md","mtime":"2018-08-14T03:54:37.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-19T03:12:32.211Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"ssh","level":"1.13","depth":1,"next":{"title":"往服务器上边加入自己本机的id_rsa.pub登录服务器的时候，就不用输入密码了","level":"1.14","depth":1,"path":"往服务器上边加入自己本机的id_rsa.pub登录服务器的时候，就不用输入密码了.md","ref":"往服务器上边加入自己本机的id_rsa.pub登录服务器的时候，就不用输入密码了.md","articles":[]},"previous":{"title":"Fabric更新后，添加一个新的Org到Channel中","level":"1.12.2","depth":2,"path":"docker/Fabric更新后，添加一个新的Org到Channel中.md","ref":"docker/Fabric更新后，添加一个新的Org到Channel中.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"SSH设置别名访问远程服务器.md","mtime":"2018-10-12T02:10:34.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2018-10-19T03:12:32.211Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

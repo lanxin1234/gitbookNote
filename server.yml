@@ -1,0 +1,162 @@
+server:
+  host: "0.0.0.0"
+  port: 9081
+logging:
+  level: "debug"
+  filename: "traffic-api.log"
+  exceptionlog: "traffic-exception.log"
+  console: true
+  maxFiles: 5
+  maxsize: 100000000
+  maxDays: 1
+pg:
+  pool:
+    max: 30 # max connections in pool
+    min: 0 # min connections in pool
+    idle: 10000
+    handleDisconnects: true
+  replication:
+    read:
+      - host: "apiserver3"
+        port: "5434"
+        username: "trafficadm"
+        password: "zaq12wsx"
+    write:
+      host: "datacenter3"
+      port: "5433"
+      username: "trafficadm"
+      password: "zaq12wsx"
+  database: "traffic"
+  user: "trafficadm"
+  password: "zaq12wsx"
+  dialect: "postgres"
+  logging: false
+memcached:
+  hosts:
+    - "memcached1:11211"
+    - "memcached2:11211"
+    - "memcached3:11211"
+  maxExpiration: 31536000
+  poolSize: 25
+  retries: 10
+  failures: 10
+  retry: 30000
+  reconnect: 60000
+  remove: true
+  timeExpired: 2592000
+  minTimeout: 1000
+  maxTimeout: 2000
+fileserver:
+  encoding: 'UTF-8'
+  tmpDir: '/home/traffic/media/'
+  maxFileSize: 30 * 1024 * 1024
+  uploadDir: '/home/traffic/media/'
+  url: 'http://111.230.174.53:9082/'
+gaode:
+  hostname: 'http://restapi.amap.com'
+  path: '/v3/geocode/regeo'
+  method: 'GET'
+  ak: 'f71b9022f52ddf8567acc44a85c05953'
+umeng:
+  android:
+    appkey: '59474dfc310c9332b5000daf'
+    appMasterSecret: 'ypsqama6l3gollavj0rafdwa8j8phnpp'
+  ios:
+    productionEnv: 'true'
+    appkey: '5a12b1ec8f4a9d61320001eb'
+    appMasterSecret: 'ybl9wlpp2jyaqpfxvyav9v8xhvoomzfq'
+  postUrl: 'http://msg.umeng.com/api/send'
+cheguansuo:
+  mock: true
+  url: 'http://cheguansuo.com'
+alipay:
+  appId: '2018010201525597'
+  appPriKey: '/home/traffic/media/alipay/app_private_key.pem'
+  aliPubKey: '/home/traffic/media/alipay/ali_public_key.pem'
+  version: '1.0'
+  charset: 'utf-8'
+  signType: 'RSA2'
+  notifyUrl: 'http://111.230.174.53:9081/api/v1/order/receiveNotification/'
+  paymentUrl: 'https://openapi.alipay.com/gateway.do'
+  productCode: 'QUICK_MSECURITY_PAY'
+  method: 'alipay.trade.app.pay'
+  sellerId: '2088821298825467'
+  sellerEmail: 'hr@daotech.io'
+  authUrl: 'https://openauth.alipay.com/oauth2/publicAppAuthorize.htm'
+  authScope: 'auth_user'
+  authRedirectUri: 'http://118.89.230.78:9081/api/v1/ali/callback'
+wechat:
+  appId: 'wxe70af59174be5f28'
+  mchId: '1510332891'
+  # signType: 'HMAC-SHA256'
+  signType: 'MD5'
+  tradeType: 'APP'
+  notifyUrl: 'http://118.89.230.78:9081/api/v1/order/receiveWEICHATNotification/'
+  appSecret: '9d95a0046404fca37d18600c359dee62' #apiSecret
+  sandboxApiSecret: 'cecf3665a2dbad817a3c7024ee3922f6'
+lss:
+  playDomain: play.daotech.net.cn
+  pushDomain: push.daotech.net.cn
+  app: hui
+  version: v5
+  url: 'https://lss.bj.baidubce.com'
+  SK: 'ea376eb034a94902a76a1caeb4c01153'
+  AKID: '8bbf688744664b94aeb25cea289ebc84'
+  expiredDuration: 1800
+  iosTestEnv: false
+  liveTime: 60000 #ms
+signature:
+  enabled: false
+  timeExpired: 60
+sms:
+  url: 'https://sms.yunpian.com/v2/'
+  singleSendUrl: 'sms/single_send.json'
+  apikey: '2250db49025bbc999a5d2e5ee5ba0586'
+  timeExpired: 300
+amqp:
+  url: 'amqp://rabbit:zaq12wsx@datacenter3'
+  maxRetry: 30
+  internal: 3000 #ms
+thrift:
+  options:
+    host: 'apiserver1'
+    port: 10081
+    idle_timeout: 3000 # ms
+    ttl: 3000 # ms
+  extral_options:
+    timeout: 3000
+mongo:
+  url: 'mongodb://mongo1,mongo2,mongo3/gps?replicaSet=rs0'
+  options:
+    user: 'gps'
+    pass: 'zaq12wsx'
+    server:
+      poolSize: 5
+    db:
+      native_parser: true
+    logging: false
+authenticate:
+  enabled: true
+homepageMap:
+  la_difference: 0.005419
+  lo_difference: 0.010418
+blockchain:
+  url:
+    upload: 'http://localhost:11081/api/v1/invoke/sharedSet'
+    insert: 'http://10.0.1.10:11081/api/v1/invoke/set'
+    legerInfo: 'http://10.0.1.10:11081/api/v1/invoke/queryHistoryForKey'
+    status: 'http://10.0.1.10:11081/api/v1/invoke/queryBlockInfoForPeer'
+    queryBlock: 'http://10.0.1.10:11081/api/v1/invoke/queryBlockInfoByNumOrHash'
+    pointsInvoke: 'http://10.0.1.10:8080/api/v1/point/invoke'
+    pointsRetrieve: 'http://10.0.1.10:8080/api/v1/point/retrieve'
+    pointsTx: 'http://10.0.1.10:8080/api/v1/point/getBlockByTx'
+    queryTxInfo: 'http://10.0.1.10:11081/api/v1/invoke/queryTxDetail'
+trafficWorker:
+  getSubmitStatusUrl: 'http://10.0.1.2:8081/getSubmitStatus'
+juhe:
+  openid: 'JHb63f93074f2218c1ffc6b6b5fae81c60'
+  tripleAuthAppKey: '2fd85c34a84b571597e0e534d186d7f5'
+  tripleAuthUrl: 'http://v.juhe.cn/verifybankcard3/query'
+  doubleAuthAppKey: '7f7253fadd30c71b6bd1ad7955df99e0'
+  doubleAuthUrl: 'http://op.juhe.cn/idcard/query'
+
